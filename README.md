@@ -5,7 +5,7 @@
 
 **READY TO COPY-PASTE · CHATGPT, CLAUDE & MIDJOURNEY · Weekend Edition**
 
-*Prepared by Antigravity AI · 2026 Release*
+*Prepared by Nexus Digital · 2026 Release*
 
 ---
 
