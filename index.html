@@ -73,12 +73,40 @@
     color: var(--text-muted);
   }
 
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    background: var(--text-primary);
+    color: var(--text-dark);
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    z-index: 1000;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(6, 182, 212, 0.16);
+  }
+
   .eyebrow {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     background: var(--grad-primary);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -129,12 +157,24 @@
   }
 
   .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
     width: 100%;
+    align-items: stretch;
   }
 
   .hero-actions .btn-buy,
+  .hero-actions .btn-bonus,
   .hero-actions .btn-ghost {
     width: 100%;
+    white-space: normal;
+    min-height: 58px;
+  }
+
+  .hero-actions .btn-bonus {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
   }
 
   /* Divider */
@@ -266,6 +306,7 @@
     line-height: 1;
     margin-top: 0.75rem;
     background: linear-gradient(to bottom, #ffffff, #93c5fd);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -488,6 +529,71 @@
     background: rgba(6, 182, 212, 0.05);
   }
 
+  /* Bonus Offer Button */
+  .btn-bonus {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(168, 85, 247, 0.18));
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.95rem 1.3rem;
+    border-radius: 14px;
+    border: 1.5px solid rgba(245, 158, 11, 0.45);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    min-height: 58px;
+    white-space: normal;
+  }
+
+  .btn-bonus:hover {
+    border-color: var(--amber);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.28), rgba(168, 85, 247, 0.28));
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(245, 158, 11, 0.18);
+  }
+
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .btn-bonus-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    line-height: 1.2;
+  }
+
+  .btn-bonus-copy span {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .btn-bonus:hover {
+    border-color: var(--amber);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(168, 85, 247, 0.25));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.2);
+  }
+
+  .btn-bonus span {
+    margin-left: 0.5rem;
+  }
+
   .section-no-pad {
     padding: 0;
   }
@@ -555,6 +661,8 @@
 
   .hero h1 span {
     background: var(--grad-primary);
+    background-clip: text;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -576,24 +684,55 @@
   }
 
   .hero-value-props {
-    margin-top: 1.75rem;
-    display: flex;
-    flex-wrap: wrap;
+    margin-top: 1.25rem;
+    display: grid;
+    gap: 0.75rem;
     justify-content: center;
-    gap: 1rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
   }
 
   .hero-prop {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.8rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(6, 182, 212, 0.08);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    font-weight: 600;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .hero-prop svg {
     color: var(--cyan);
     flex-shrink: 0;
+  }
+
+  .hero-trust-bar {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .trust-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 0.95rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .trust-pill strong {
+    color: var(--text-primary);
   }
 
   .offer-card {
@@ -740,6 +879,7 @@
     font-size: 2.5rem;
     font-weight: 800;
     background: var(--grad-primary);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
@@ -749,12 +889,14 @@
 
   .stat-item:nth-child(2) .stat-num {
     background: var(--grad-purple);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .stat-item:nth-child(3) .stat-num {
     background: var(--grad-gold);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -782,6 +924,7 @@
 
   h2.section-title span {
     background: var(--grad-primary);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -1202,12 +1345,19 @@
     }
 
     .hero-actions {
-      flex-direction: row; /* Inline actions */
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
+      align-items: stretch;
     }
 
-    .btn-buy, .btn-ghost {
-      width: auto; /* Shrink to contents */
+    .hero-actions .btn-buy,
+    .hero-actions .btn-bonus,
+    .hero-actions .btn-ghost {
+      width: auto;
+      min-width: 230px;
+      flex: 1 1 240px;
     }
 
     .stats-bar {
@@ -1483,6 +1633,12 @@
 
     .hero-value-props {
       justify-content: flex-start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 620px;
+    }
+
+    .hero-trust-bar {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .book-wrapper {
@@ -1521,6 +1677,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- Background Orbs -->
 <div class="glow-orb orb-cyan parallax-bg-slow"></div>
@@ -1528,8 +1685,9 @@
 <div class="glow-orb orb-amber parallax-bg-slow"></div>
 <div class="grid-bg parallax-bg-fast"></div>
 
+<main id="main-content">
 <!-- Nav -->
-<nav id="navbar">
+<nav id="navbar" aria-label="Primary">
   <div class="nav-inner">
     <a href="#" class="nav-brand"><img src="logo.png" alt="Nexus Digital Logo" class="nav-logo" />Nexus<span>Digital</span></a>
     <a class="btn-buy" data-gumroad-action="buy" href="https://arsalanite680.gumroad.com/l/ai_side_hustles">
@@ -1554,13 +1712,20 @@
         <p class="hero-sub">Real, actionable digital income plans powered by accessible AI tools. To unlock these digital income streams, you must download the Ebook and follow the step-by-step methods.</p>
         <div class="hero-actions">
           <a class="btn-buy" data-gumroad-action="buy" href="https://arsalanite680.gumroad.com/l/ai_side_hustles">Get the e-book at 50% off →</a>
+          <a class="btn-bonus" data-gumroad-action="buy" href="https://arsalanite680.gumroad.com/l/ai_side_hustles" title="Free AI Prompt Templates Bundle Included with Purchase"><span class="btn-icon">✨</span><span class="btn-bonus-copy">Unlock Free Prompt Pack <span>+ E-book</span></span></a>
           <a class="btn-ghost" href="#hustles">See What's Inside</a>
         </div>
+        <div class="hero-trust-bar" role="list" aria-label="Key benefits">
+          <div class="trust-pill" role="listitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M3 12h18"/></svg><span><strong>Instant</strong> PDF access</span></div>
+          <div class="trust-pill" role="listitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17 4 12"/></svg><span><strong>Beginner</strong> friendly</span></div>
+          <div class="trust-pill" role="listitem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg><span><strong>Works</strong> on your schedule</span></div>
+        </div>
+
         <div class="offer-card">
           <div class="offer-pill">Limited-Time Offer</div>
           <div class="offer-price-row">
             <span class="offer-price">Save 50% on the e-book today</span>
-            <span class="offer-old-price">$29</span>
+            <span class="offer-old-price">$8.99</span>
           </div>
           <p>Build trust fast with a practical guide to 50 AI side hustles, step-by-step instructions, and instant access to the PDF.</p>
           <div class="offer-trust">
@@ -2000,6 +2165,92 @@
   </div>
 </section>
 
+<!-- FREE BONUS: Prompt Pack Section -->
+<section>
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">🎁 EXCLUSIVE BONUS</span>
+      <h2 class="section-title">Get the <span>50 AI Side Hustles Prompt Pack</span> FREE</h2>
+      <p class="section-intro">Every e-book buyer receives instant access to our complete prompt pack — copy-paste templates for all 50 hustles, detailed workflows, and AI tool configurations.</p>
+    </div>
+    
+    <div class="bento-grid">
+      <!-- Prompt Pack Feature 1 -->
+      <div class="bento-card reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5Z"/></svg>
+        </div>
+        <h3>Copy-Paste Prompt Templates</h3>
+        <p>Proven AI prompts for ChatGPT, Claude, Midjourney, and more. Every hustle includes tested prompts you can paste directly into your favorite AI tool — no tweaking needed.</p>
+      </div>
+      
+      <!-- Prompt Pack Feature 2 -->
+      <div class="bento-card reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+        </div>
+        <h3>Complete Workflow Cards</h3>
+        <p>Step-by-step instructions for each tool (Make.com, Zapier, Notion, Clay, HeyGen, and 50+ more). No guesswork—just follow the exact sequence.</p>
+      </div>
+      
+      <!-- Prompt Pack Feature 3 -->
+      <div class="bento-card reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>AI Tool Configurations</h3>
+        <p>Exact settings for ChatGPT, Claude, Midjourney, and specialized tools. Copy these configurations to skip the trial-and-error phase and get production-ready outputs immediately.</p>
+      </div>
+      
+      <!-- Prompt Pack Feature 4 -->
+      <div class="bento-card reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>"Power Moves" Tips</h3>
+        <p>Insider hacks and pro tips hidden throughout. These small optimizations often triple your output quality and help you stand out from competitors.</p>
+      </div>
+      
+      <!-- Prompt Pack Feature 5 (Wide) -->
+      <div class="bento-card bento-card-wide reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+        </div>
+        <h3>All 50 Hustles Covered: AI Freelancing, Content Creation, Digital Products, Consulting, Automation, Affiliate Marketing, Prompt Selling, and Agency Models</h3>
+        <p>This isn't a generic template pack. Every hustle includes: the core concept • the exact problem it solves • a complete copy-paste prompt • tool recommendations • step-by-step workflows • real income projections • and pro tips to stand out. Covers everything from <strong>AI Copywriting & Resume Writing</strong> to <strong>Faceless YouTube Channels & Chatbot Builders</strong> to <strong>Notion Templates & Voice Agents</strong> to <strong>Landing Page Agencies & Product Video Creation</strong>.</p>
+      </div>
+      
+      <!-- Prompt Pack Feature 6 -->
+      <div class="bento-card reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+        </div>
+        <h3>Instant Implementation</h3>
+        <p>No onboarding, no waiting. Download the PDF, pick a hustle, copy the exact prompt into your AI tool, and start generating client-ready outputs within minutes.</p>
+      </div>
+      
+      <!-- Prompt Pack Feature 7 -->
+      <div class="bento-card reveal">
+        <div class="card-icon-container">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        </div>
+        <h3>Trusted by 1000+ Digital Creators</h3>
+        <p>Used by content creators, side hustlers, and freelancers worldwide to launch profitable AI-powered services. Save months of research and trial-and-error.</p>
+      </div>
+    </div>
+    
+    <div class="reveal" style="text-align: center; margin-top: 3rem;">
+      <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1.5rem;"><strong>✨ What's Inside the Prompt Pack:</strong></p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 700px; margin: 0 auto 2rem; line-height: 1.8;">
+        <strong>13+ Prompt Templates × 8 Sections</strong> covering AI Freelancing, Content Creation, Digital Products, AI Consulting, Automation Services, Affiliate Marketing, Prompt Selling, and Agency Models. Each template includes variables you fill in, exact tool configurations, workflow instructions, and proven power moves to scale your earnings. Compatible with ChatGPT, Claude, Midjourney, ElevenLabs, Perplexity, and 40+ other AI platforms.
+      </p>
+      <a class="btn-buy btn-buy-hero" data-gumroad-action="buy" href="https://arsalanite680.gumroad.com/l/ai_side_hustles">
+        Download E-book + Get Prompt Pack FREE →
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
   <div class="container">
@@ -2007,6 +2258,7 @@
     <p class="footer-note">Made with ❤️ for side-hustlers everywhere.</p>
   </div>
 </footer>
+</main>
 
 <script>
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
